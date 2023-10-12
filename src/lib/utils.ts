@@ -49,7 +49,7 @@ export function constructMetadata({
       creator: "@rishav887"
     },
     icons,
-    metadataBase: new URL('https://pdf-craftify.vercel.app/'),
+    metadataBase: new URL('https://pdf-craftify-main.vercel.app'),
     themeColor: '#FFF',
     ...(noIndex && {
       robots: {
