@@ -19,12 +19,6 @@ const nextConfig = {
     domains: ['lh3.googleusercontent.com'],
   },
 
-  
-    images: {
-      domains: ['source.unsplash.com'],
-    },
-
-
   webpack: (
     config,
     { buildId, dev, isServer, defaultLoaders, webpack }
