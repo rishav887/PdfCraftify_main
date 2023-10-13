@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useRef, useState } from 'react';
+import { ReactNode, createContext, useRef, useState, useEffect } from 'react';
 import { useToast } from '../ui/use-toast';
 import { useMutation } from '@tanstack/react-query';
 import { trpc } from '@/app/_trpc/client';
@@ -199,9 +199,6 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
       setIsLoading(false);
 
       await utils.getFileMessages.invalidate({ fileId });
-
-      // Clear the input box after settled
-      setMessage('');
     },
   });
 
@@ -211,19 +208,16 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
     setMessage(e.target.value);
   };
 
-  const addMessage = () => {
-    // Check if the message is not empty
-    if (message.trim() === '') {
-      return;
-    }
-
+  const handleSendMessage = () => {
     sendMessage({ message });
+    // You can decide whether to add the message immediately or not
+    // addMessage();
   };
 
   return (
     <ChatContext.Provider
       value={{
-        addMessage,
+        addMessage: handleSendMessage,
         message,
         handleInputChange,
         isLoading,

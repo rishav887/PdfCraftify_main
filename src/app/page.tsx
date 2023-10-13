@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import { RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server'
 import Testimonials from '@/components/Testimonials'
 
+
 export default function Home() {
   return (
     <>
@@ -29,7 +30,6 @@ export default function Home() {
       Government documents etc
     </p>
   </div>
-
 
   <div className="lg:w-1/2 lg:pl-8">
     <img src="/herox.jpg" alt="Hero Image" className="w-full h-auto" />
@@ -200,6 +200,7 @@ export default function Home() {
 
       <Footer />
       <div style={{ margin: '20px 0' }} /> {/* Add some margin for spacing */}
+
     </>
   )
 }
