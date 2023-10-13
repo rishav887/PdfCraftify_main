@@ -33,19 +33,16 @@ const Footer = () => {
       </div>
       <div className="mb-4 md:mb-0">
         <h3 className="text-xl font-bold mb-2">Contact Us</h3>
-        <p className="text-gray-400">Email: info@pdfcraftify.com</p>
+        <p className="text-gray-400">Email: pdfcraftify@gmail.com</p>
       
       </div> 
       <div>
         <h3 className="text-xl font-bold mb-2">Follow Us</h3>
         <div className="flex space-x-4">
-          <a href="#" className="text-gray-400 hover:text-white transition duration-300">
+          <a href="https://twitter.com/PdfCraftify" className="text-gray-400 hover:text-white transition duration-300">
             Twitter
           </a>
-          <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-            LinkedIn
-          </a>
-          <a href="#" className="text-gray-400 hover:text-white transition duration-300">
+          <a href="https://www.facebook.com/profile.php?id=61552189864979" className="text-gray-400 hover:text-white transition duration-300">
             Facebook
           </a>
         </div>

@@ -199,6 +199,9 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
       setIsLoading(false);
 
       await utils.getFileMessages.invalidate({ fileId });
+
+      // Clear the input box after settled
+      setMessage('');
     },
   });
 
@@ -208,7 +211,14 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
     setMessage(e.target.value);
   };
 
-  const addMessage = () => sendMessage({ message });
+  const addMessage = () => {
+    // Check if the message is not empty
+    if (message.trim() === '') {
+      return;
+    }
+
+    sendMessage({ message });
+  };
 
   return (
     <ChatContext.Provider
