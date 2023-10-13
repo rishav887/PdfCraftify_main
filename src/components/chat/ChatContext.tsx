@@ -177,13 +177,15 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
           accResponse += chunkValue;
           appendMessagesToUI(accResponse);
 
-          readChunk();
+          // Continue reading the next chunk
+          await readChunk();
         } else {
           // Handle completion if needed
         }
       };
 
-      readChunk();
+      // Call the initial readChunk to start reading chunks
+      await readChunk();
     },
 
     onError: (_, __, context) => {
