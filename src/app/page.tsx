@@ -5,49 +5,49 @@ import { buttonVariants } from '@/components/ui/button'
 import Image from 'next/image'
 import Footer from '@/components/Footer';
 import { RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server'
+import Testimonials from '@/components/Testimonials'
 
 export default function Home() {
   return (
     <>
-      <MaxWidthWrapper className='mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center'>
-        <div className='mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50'>
-          <p className='text-sm font-semibold text-gray-700'>
-          PDFCraftify is now 
-          <span className='text-green-600'> LIVE!</span>{' '}
-          </p>
-        </div>
-        <h1 className='max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl'>
-         Engage in conversation with any  {' '}
-          <span className='text-blue-600'>PDF File!</span>{' '}
-        </h1>
-        <p className='mt-5 max-w-prose text-zinc-700 sm:text-lg'>
-        Empowering you to transform static documents into vibrant conversations, 
-        PDFCraftify enables you to inquire, summarize, discover, and explore with your
-        legal agreements, financial reports etc.
-        </p>
-        <div className='mt-6'>
-    <p className='text-gray-700 font-semibold'>Discover the possibilities with documents like:</p>
-    <ul className='list-none pl-5 mt-3 mb-4'>
-  <li className='mb-2'>Business proposals</li>
-  <li className='mb-2'>Academic research papers</li>
-  <li className='mb-2'>Technical manuals</li>
-  <li className='mb-2'>Product catalogs</li>
-  <li className='mb-2'>User manuals</li>
-  <li className='mb-2'>Marketing brochures</li>
-  <li className='mb-2'>E-books</li>
-  <li className='mb-2'>Government documents</li>
-  {/* No list styling for the last two li elements */}
-  <li style={{ listStyle: 'none' }}> </li>
-  <li style={{ listStyle: 'none' }}> </li>
-</ul>
+<MaxWidthWrapper className='max-w-8xl mx-auto inline-block items-center p-3 pt-0 lg:flex lg:flex-wrap lg:pt-4'>
+  <div className="lg:w-1/2 lg:pr-8">
+    <h1 className='max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl'>
+      Engage in conversation with any {' '}
+      <span className='text-blue-600'>PDF File!</span>{' '}
+    </h1>
+    <p className='mt-5 max-w-prose text-zinc-700 sm:text-lg'>
+      Empowering you to transform static documents into vibrant conversations,
+      PDFCraftify enables you to inquire, summarize, discover, and explore with 
+      your Business proposals,
+      Academic research papers,
+      Technical manuals,
+      Product catalogs,
+      User manuals,
+      Marketing brochures,
+      E-books,
+      Government documents etc
+    </p>
   </div>
-       <RegisterLink
-                  className={buttonVariants({
-                    size: 'lg',
-                  })}>
-                  Get started{' '}
-                </RegisterLink>
-      </MaxWidthWrapper>
+  
+  <div className="lg:w-1/2 lg:pl-8">
+    <img src="/herox.jpg" alt="Hero Image" className="w-full h-auto" />
+  </div>
+
+  <div className="lg:w-1/2 mt-5 lg:mt-0">
+    <p className='text-gray-700 font-semibold mb-4'>
+      Discover the possibilities with documents.
+    </p>
+
+    <RegisterLink
+      className={buttonVariants({
+        size: 'lg',
+      })}>
+      Get started{' '}
+    </RegisterLink>
+  </div>
+</MaxWidthWrapper>
+
 
       {/* value proposition section */}
       <div>
@@ -97,11 +97,11 @@ export default function Home() {
       </div>
 
       {/* Feature section */}
-      <div className='mx-auto mb-32 mt-32 max-w-5xl sm:mt-56'>
+      <div className='mx-auto mb-32 mt-32 max-w-5xl sm:mt-75'>
         <div className='mb-12 px-6 lg:px-8'>
           <div className='mx-auto max-w-2xl sm:text-center'>
             <h2 className='mt-2 font-bold text-4xl text-gray-900 sm:text-5xl'>
-            Initiate a dialogue with any PDF document seamlessly.
+            Start a conversation effortlessly with any PDF document.
             </h2>
             <p className='mt-4 text-lg text-gray-600'>
             Breathing life into static files, PDFCraftify enables you to engage in interactive conversations, ask questions, 
@@ -109,6 +109,7 @@ export default function Home() {
             </p>
           </div>
         </div>
+
 
         {/* steps */}
         <ol className='my-8 space-y-4 pt-8 md:flex md:space-x-12 md:space-y-0'>
@@ -193,7 +194,11 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Testimonials />
+      <div style={{ margin: '20px 0' }} /> {/* Add some margin for spacing */}
+
       <Footer />
+      <div style={{ margin: '20px 0' }} /> {/* Add some margin for spacing */}
     </>
   )
 }
