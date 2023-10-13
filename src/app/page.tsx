@@ -29,7 +29,8 @@ export default function Home() {
       Government documents etc
     </p>
   </div>
-  
+
+
   <div className="lg:w-1/2 lg:pl-8">
     <img src="/herox.jpg" alt="Hero Image" className="w-full h-auto" />
   </div>
