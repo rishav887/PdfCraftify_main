@@ -40,9 +40,6 @@ export default function Home() {
   <li style={{ listStyle: 'none' }}> </li>
   <li style={{ listStyle: 'none' }}> </li>
 </ul>
-
-
-
   </div>
        <RegisterLink
                   className={buttonVariants({
@@ -83,6 +80,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+
 
           <div
             aria-hidden='true'
