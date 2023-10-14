@@ -8,9 +8,7 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import { NextRequest } from 'next/server';
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "edge";
 
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
