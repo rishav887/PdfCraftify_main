@@ -50,7 +50,6 @@ export function constructMetadata({
     },
     icons,
     metadataBase: new URL('https://pdf-craftify-main.vercel.app'),
-  //  metadataBase: new URL('https://main--profound-semifreddo-34fc3d.netlify.app'),
     themeColor: '#FFF',
     ...(noIndex && {
       robots: {
