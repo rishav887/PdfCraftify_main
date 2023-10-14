@@ -1,6 +1,6 @@
-import { ReactNode, createContext, useRef, useState, useEffect } from 'react';
+import { ReactNode, createContext, useRef, useState } from 'react';
 import { useToast } from '../ui/use-toast';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { trpc } from '@/app/_trpc/client';
 import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query';
 
@@ -32,6 +32,20 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
   const { toast } = useToast();
 
   const backupMessage = useRef('');
+
+  const { data: uploadStatusData, refetch: refetchUploadStatus } = useQuery({
+    queryKey: ['getFileUploadStatus', fileId],
+    // ... (other options)
+    refetchOnWindowFocus: false, // Disable automatic refetch on window focus for upload status
+    // ... (other options)
+  });
+
+  const { data: fileMessagesData, refetch: refetchFileMessages } = useQuery({
+    queryKey: ['getFileMessages', { fileId, limit: INFINITE_QUERY_LIMIT }],
+    // ... (other options)
+    refetchOnWindowFocus: false, // Disable automatic refetch on window focus for file messages
+    // ... (other options)
+  });
 
   const { mutate: sendMessage } = useMutation({
     mutationFn: async ({ message }: { message: string }) => {
@@ -171,24 +185,30 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
 
       const readChunk = async () => {
         const { value, done } = await reader.read();
-
+      
         if (!done) {
           const chunkValue = decoder.decode(value);
           accResponse += chunkValue;
+          console.log('Received chunk:', accResponse);
+      
           appendMessagesToUI(accResponse);
-
+      
           // Continue reading the next chunk
           await readChunk();
         } else {
+          console.log('Stream reading completed.');
           // Handle completion if needed
         }
       };
+      
 
       // Call the initial readChunk to start reading chunks
       await readChunk();
     },
 
-    onError: (_, __, context) => {
+    onError: (error, __, context) => {
+      console.error('Error during mutation:', error);
+      console.log('Previous messages:', context?.previousMessages);
       setMessage(backupMessage.current);
       utils.getFileMessages.setData(
         { fileId },
