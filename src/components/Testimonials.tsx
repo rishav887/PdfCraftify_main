@@ -16,7 +16,7 @@ const Testimonials = () => {
         <div className="mb-12 md:mb-0">
           <div className="mb-6 flex justify-center">
             <img
-              src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(1).jpg"
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2861&q=80"
               className="w-32 rounded-full shadow-lg dark:shadow-black/30"
               alt="Testimonial Avatar"
             />
@@ -42,7 +42,7 @@ const Testimonials = () => {
         <div className="mb-12 md:mb-0">
           <div className="mb-6 flex justify-center">
             <img
-              src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(2).jpg"
+              src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80"
               className="w-32 rounded-full shadow-lg dark:shadow-black/30"
               alt="Testimonial Avatar"
             />
@@ -136,7 +136,7 @@ const Testimonials = () => {
         <div className="mb-12 md:mb-0">
           <div className="mb-6 flex justify-center">
             <img
-              src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(3).jpg"
+              src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2592&q=80"
               className="w-32 rounded-full shadow-lg dark:shadow-black/30"
               alt="Testimonial Avatar"
             />
