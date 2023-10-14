@@ -41,6 +41,7 @@
     "date-fns": "^2.30.0",
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.2",
+    "eventsource-parser": "^1.1.1",
     "fs": "0.0.1-security",
     "langchain": "^0.0.153",
     "lucide-react": "^0.279.0",
@@ -76,8 +77,5 @@
   "devDependencies": {
     "@types/react-modal": "^3.16.1",
     "@types/react-slick": "^0.23.10"
-  },
-"browser": {
-    "crypto": false
-}
+  }
 }
