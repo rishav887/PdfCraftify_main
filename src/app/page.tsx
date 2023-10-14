@@ -14,20 +14,14 @@ export default function Home() {
 <MaxWidthWrapper className='max-w-8xl mx-auto inline-block items-center p-3 pt-0 lg:flex lg:flex-wrap lg:pt-4'>
   <div className="lg:w-1/2 lg:pr-8">
     <h1 className='max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl'>
-      Engage in conversation with any {' '}
+      Engage in AI-powered conversation with any  {' '}
       <span className='text-blue-600'>PDF File!</span>{' '}
     </h1>
     <p className='mt-5 max-w-prose text-zinc-700 sm:text-lg'>
-      Empowering you to transform static documents into vibrant conversations,
-      PDFCraftify enables you to inquire, summarize, discover, and explore with 
-      your Business proposals,
-      Academic research papers,
-      Technical manuals,
-      Product catalogs,
-      User manuals,
-      Marketing brochures,
-      E-books,
-      Government documents etc
+    AI-driven PDFCraftify empowers you to turn static documents—such as business proposals, 
+    academic research papers, technical manuals, product catalogs, 
+    user manuals, marketing brochures, e-books, government documents—into dynamic conversations, 
+    allowing you to inquire, summarize, discover, and explore.
     </p>
   </div>
 

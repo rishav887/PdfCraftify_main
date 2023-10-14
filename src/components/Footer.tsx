@@ -142,7 +142,7 @@ const Footer = () => {
 
             <h3>9. Contact Us</h3>
             <p>
-              If you have any questions about this Privacy Policy, please reach out to us at contact@pdfcraftify.com.
+              If you have any questions about this Privacy Policy, please reach out to us at pdfcraftify@gmail.com.
             </p>
 
             <p>
@@ -154,7 +154,8 @@ const Footer = () => {
         </div>
       </Modal>
 
-    </footer><p>Made with <span className="heart">♥ in Rishav</span></p></>
+    </footer>
+    </>
 
   );
   }
