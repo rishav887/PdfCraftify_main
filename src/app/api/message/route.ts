@@ -29,7 +29,7 @@ const startPolling = async () => {
   const pollingIntervalId = setInterval(poll, pollInterval);
 
   // Stop polling after a certain duration (e.g., 2 minutes)
-  const pollingDuration = 120000; // 2 minutes
+  const pollingDuration = 240000; // 4 minutes (40 seconds * 6 intervals)
   setTimeout(() => clearInterval(pollingIntervalId), pollingDuration);
 };
 
@@ -131,7 +131,7 @@ export const POST = async (req: NextRequest) => {
 
   // Create a timeout promise for the OpenAI API request
   const timeoutPromise = new Promise<never>((_, reject) => {
-    const timeoutDuration = 20000; // 20 seconds timeout
+    const timeoutDuration = 40000; // 40 seconds timeout
     setTimeout(() => {
       reject(new Error('OpenAI API request timed out'));
     }, timeoutDuration);
