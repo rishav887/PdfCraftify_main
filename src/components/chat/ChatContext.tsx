@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useRef, useState } from 'react';
+import { ReactNode, createContext, useRef, useState, useEffect } from 'react';
 import { useToast } from '../ui/use-toast';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { trpc } from '@/app/_trpc/client';
@@ -35,16 +35,12 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
 
   const { data: uploadStatusData, refetch: refetchUploadStatus } = useQuery({
     queryKey: ['getFileUploadStatus', fileId],
-    // ... (other options)
-    refetchOnWindowFocus: false, // Disable automatic refetch on window focus for upload status
-    // ... (other options)
+    refetchOnWindowFocus: false,
   });
 
   const { data: fileMessagesData, refetch: refetchFileMessages } = useQuery({
     queryKey: ['getFileMessages', { fileId, limit: INFINITE_QUERY_LIMIT }],
-    // ... (other options)
-    refetchOnWindowFocus: false, // Disable automatic refetch on window focus for file messages
-    // ... (other options)
+    refetchOnWindowFocus: false,
   });
 
   const { mutate: sendMessage } = useMutation({
@@ -201,11 +197,9 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
         }
       };
       
-
       // Call the initial readChunk to start reading chunks
       await readChunk();
     },
-
     onError: (error, __, context) => {
       console.error('Error during mutation:', error);
       console.log('Previous messages:', context?.previousMessages);
@@ -222,6 +216,21 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
     },
   });
 
+  const pollFileMessages = () => {
+    refetchFileMessages();
+  };
+
+  // Polling interval in milliseconds (e.g., 5000ms or 5 seconds)
+  const pollingInterval = 5000;
+
+  useEffect(() => {
+    const pollingIntervalId = setInterval(pollFileMessages, pollingInterval);
+
+    return () => {
+      clearInterval(pollingIntervalId);
+    };
+  }, []);
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
@@ -230,8 +239,6 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
 
   const handleSendMessage = () => {
     sendMessage({ message });
-    // You can decide whether to add the message immediately or not
-    // addMessage();
   };
 
   return (
