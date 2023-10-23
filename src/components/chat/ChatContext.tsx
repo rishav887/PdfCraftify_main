@@ -221,7 +221,7 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
   };
 
   // Polling interval in milliseconds (e.g., 5000ms or 5 seconds)
-  const pollingInterval = 5000;
+  const pollingInterval = 10000;
 
   useEffect(() => {
     const pollingIntervalId = setInterval(pollFileMessages, pollingInterval);

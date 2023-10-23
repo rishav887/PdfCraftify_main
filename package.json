@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "output": "export",
+    "deploy": "firebase deploy --only functions,hosting",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate"

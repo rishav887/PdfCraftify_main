@@ -1,5 +1,5 @@
 # PdfCraftify
-Built with the Next.js 13.5 App Router, tRPC, TypeScript, Prisma & Tailwind CSS
+Built with the Next.js 13.5 App Router, tRPC, TypeScript, Prisma & Tailwind
 
 
 ## Features
