@@ -9,7 +9,6 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import { NextRequest } from 'next/server';
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 
-export const runtime = 'edge';
 
 // Define a function to handle polling
 const startPolling = async () => {
