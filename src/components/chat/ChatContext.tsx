@@ -5,6 +5,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { trpc } from '@/app/_trpc/client';
 import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query';
 
+
 // Defining the structure of the context value
 type StreamResponse = {
   addMessage: () => void;
@@ -72,6 +73,7 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
       clearInterval(pollingIntervalId);
     };
   }, []);
+
 
   // Mutation for sending a new message with polling
   const { mutate: sendMessageWithPolling } = useMutation({
