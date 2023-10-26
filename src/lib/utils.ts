@@ -49,8 +49,8 @@ export function constructMetadata({
       creator: "@rishav887"
     },
     icons,
-// metadataBase: new URL('https://pdf-craftify-main.vercel.app'),
-    metadataBase: new URL('https://pdfcraftify-ai.up.railway.app'),
+ metadataBase: new URL('https://pdf-craftify-main.vercel.app'),
+ //   metadataBase: new URL('https://pdfcraftify-ai.up.railway.app'),
 //  metadataBase: new URL('https://main--profound-semifreddo-34fc3d.netlify.app'),
     themeColor: '#FFF',
     ...(noIndex && {
