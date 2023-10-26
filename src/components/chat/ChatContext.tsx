@@ -1,12 +1,9 @@
-// Importing necessary dependencies
-import { ReactNode, createContext, useRef, useState, useEffect } from 'react';
+import { ReactNode, createContext, useRef, useState } from 'react';
 import { useToast } from '../ui/use-toast';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { trpc } from '@/app/_trpc/client';
 import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query';
 
-
-// Defining the structure of the context value
 type StreamResponse = {
   addMessage: () => void;
   message: string;
@@ -14,7 +11,6 @@ type StreamResponse = {
   isLoading: boolean;
 };
 
-// Creating the context with default values
 export const ChatContext = createContext<StreamResponse>({
   addMessage: () => {},
   message: '',
@@ -22,63 +18,37 @@ export const ChatContext = createContext<StreamResponse>({
   isLoading: false,
 });
 
-// Interface for component props
 interface Props {
   fileId: string;
   children: ReactNode;
 }
 
-// Component responsible for managing the chat context
 export const ChatContextProvider = ({ fileId, children }: Props) => {
-  // State for the current message being typed
   const [message, setMessage] = useState<string>('');
-  // State to track loading status
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // Accessing utility functions from trpc
   const utils = trpc.useContext();
 
-  // Toast utility for displaying messages
   const { toast } = useToast();
 
-  // Ref for storing the backup message
   const backupMessage = useRef('');
 
-  // Query to get file upload status
   const { data: uploadStatusData, refetch: refetchUploadStatus } = useQuery({
     queryKey: ['getFileUploadStatus', fileId],
-    refetchOnWindowFocus: false,
+    // ... (other options)
+    refetchOnWindowFocus: false, // Disable automatic refetch on window focus for upload status
+    // ... (other options)
   });
 
-  // Query to get file messages with infinite loading
   const { data: fileMessagesData, refetch: refetchFileMessages } = useQuery({
     queryKey: ['getFileMessages', { fileId, limit: INFINITE_QUERY_LIMIT }],
-    refetchOnWindowFocus: false,
+    // ... (other options)
+    refetchOnWindowFocus: false, // Disable automatic refetch on window focus for file messages
+    // ... (other options)
   });
 
-  // Function to manually trigger file messages polling
-  const pollFileMessages = () => {
-    refetchFileMessages();
-  };
-
-  // Polling interval in milliseconds (e.g., 5000ms or 5 seconds)
-  const pollingInterval = 10000;
-
-  // Setting up the polling interval effect
-  useEffect(() => {
-    const pollingIntervalId = setInterval(pollFileMessages, pollingInterval);
-
-    // Clearing the interval on component unmount
-    return () => {
-      clearInterval(pollingIntervalId);
-    };
-  }, []);
-
-
-  // Mutation for sending a new message with polling
-  const { mutate: sendMessageWithPolling } = useMutation({
+  const { mutate: sendMessage } = useMutation({
     mutationFn: async ({ message }: { message: string }) => {
-      // Sending a POST request to the server
       const response = await fetch('/api/message', {
         method: 'POST',
         body: JSON.stringify({
@@ -87,7 +57,6 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
         }),
       });
 
-      // Handling errors
       if (!response.ok) {
         throw new Error('Failed to send message');
       }
@@ -95,17 +64,13 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
       return response.body;
     },
     onMutate: async ({ message }) => {
-      // Storing the backup message and clearing the input field
       backupMessage.current = message;
       setMessage('');
 
-      // Canceling the ongoing file messages query
       await utils.getFileMessages.cancel();
 
-      // Retrieving the previous messages for UI update
       const previousMessages = utils.getFileMessages.getInfiniteData();
 
-      // Updating the local state optimistically
       utils.getFileMessages.setInfiniteData(
         { fileId, limit: INFINITE_QUERY_LIMIT },
         (old) => {
@@ -138,10 +103,8 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
         }
       );
 
-      // Setting loading state
       setIsLoading(true);
 
-      // Returning previous messages for potential rollback
       return {
         previousMessages:
           previousMessages?.pages.flatMap(
@@ -150,10 +113,8 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
       };
     },
     onSuccess: async (stream) => {
-      // Handling successful message sending
       setIsLoading(false);
 
-      // Displaying an error message if the stream is not available
       if (!stream) {
         return toast({
           title: 'There was a problem sending this message',
@@ -162,13 +123,11 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
         });
       }
 
-      // Reading the stream data
       const reader = stream.getReader();
       const decoder = new TextDecoder();
 
       let accResponse = '';
 
-      // Function to append received messages to UI
       const appendMessagesToUI = (text: string) => {
         utils.getFileMessages.setInfiniteData(
           { fileId, limit: INFINITE_QUERY_LIMIT },
@@ -224,37 +183,32 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
         );
       };
 
-      // Function to read a chunk of data from the stream
       const readChunk = async () => {
-        let done = false;
-
-        while (!done) {
-          const { value, done: isDone } = await reader.read();
-
-          done = isDone;
-
-          if (!done) {
-            const chunkValue = decoder.decode(value);
-            accResponse += chunkValue;
-            console.log('Received chunk:', accResponse);
-
-            appendMessagesToUI(accResponse);
-          }
+        const { value, done } = await reader.read();
+      
+        if (!done) {
+          const chunkValue = decoder.decode(value);
+          accResponse += chunkValue;
+          console.log('Received chunk:', accResponse);
+      
+          appendMessagesToUI(accResponse);
+      
+          // Continue reading the next chunk
+          await readChunk();
+        } else {
+          console.log('Stream reading completed.');
+          // Handle completion if needed
         }
-
-        console.log('Stream reading completed.');
-        // Handle completion if needed
       };
+      
 
       // Call the initial readChunk to start reading chunks
       await readChunk();
     },
+
     onError: (error, __, context) => {
-      // Handling errors during mutation
       console.error('Error during mutation:', error);
       console.log('Previous messages:', context?.previousMessages);
-
-      // Restoring the backup message and updating UI
       setMessage(backupMessage.current);
       utils.getFileMessages.setData(
         { fileId },
@@ -262,26 +216,24 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
       );
     },
     onSettled: async () => {
-      // Resetting loading state and invalidating the file messages query
       setIsLoading(false);
 
       await utils.getFileMessages.invalidate({ fileId });
     },
   });
 
-  // Handler for updating the message input
   const handleInputChange = (
     e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setMessage(e.target.value);
   };
 
-  // Handler for sending a message
   const handleSendMessage = () => {
-    sendMessageWithPolling({ message });
+    sendMessage({ message });
+    // You can decide whether to add the message immediately or not
+    // addMessage();
   };
 
-  // Providing the chat context value to the children components
   return (
     <ChatContext.Provider
       value={{
