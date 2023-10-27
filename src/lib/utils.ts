@@ -50,7 +50,8 @@ export function constructMetadata({
     },
     icons,
    // metadataBase: new URL('https://pdf-craftify-main.vercel.app'),
-    metadataBase: new URL('https://pdfcraftify-ai.up.railway.app'),
+  //  metadataBase: new URL('https://pdfcraftify-ai.up.railway.app'),
+    metadataBase: new URL('https://converse2pdf.com'),  
     themeColor: '#FFF',
     ...(noIndex && {
       robots: {
