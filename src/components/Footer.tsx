@@ -34,7 +34,6 @@ const Footer = () => {
         <div className="mb-4 md:mb-0">
           <h3 className="text-xl font-bold mb-2">Contact Us</h3>
           <p className="text-gray-400">Email: converse2pdf@gmail.com</p>
-
         </div>
         <div>
           <h3 className="text-xl font-bold mb-2">Follow Us</h3>

@@ -19,7 +19,7 @@ export function absoluteUrl(path: string) {
 export function constructMetadata({
   title = "Converse2Pdf : AI based PDF Reader",
   description = "Converse2Pdf is a SAAS App to read PDF and answer your questions in runtime.",
-  image = "/thumbnail.png",
+  image = "/thumbnail2.png",
   icons = "/favicon.ico",
   noIndex = false
 }: {
