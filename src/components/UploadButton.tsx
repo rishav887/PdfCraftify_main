@@ -36,6 +36,7 @@ const UploadDropzone = ({
   const { mutate: startPolling } = trpc.getFile.useMutation(
     {
       onSuccess: (file) => {
+        console.log('File upload success:', file);
         router.push(`/dashboard/${file.id}`)
       },
       retry: true,
@@ -68,7 +69,8 @@ const UploadDropzone = ({
         const progressInterval = startSimulatedProgress()
 
         // handle file uploading
-        const res = await startUpload(acceptedFile)
+        const res = await startUpload(acceptedFile);
+        console.log('Upload response:', res);
 
         if (!res) {
           return toast({
@@ -78,9 +80,11 @@ const UploadDropzone = ({
           })
         }
 
-        const [fileResponse] = res
+        const [fileResponse] = res;
+        console.log('File response:', fileResponse);
 
         const key = fileResponse?.key
+        console.log('Key:', key);
 
         if (!key) {
           return toast({

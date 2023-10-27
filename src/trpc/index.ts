@@ -176,22 +176,39 @@ export const appRouter = router({
       return { status: file.uploadStatus }
     }),
 
-  getFile: privateProcedure
+    getFile: privateProcedure
     .input(z.object({ key: z.string() }))
     .mutation(async ({ ctx, input }) => {
-      const { userId } = ctx
-
-      const file = await db.file.findFirst({
+      const { userId } = ctx;
+      let file = await db.file.findFirst({
         where: {
           key: input.key,
           userId,
         },
-      })
-
-      if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
-
-      return file
+      });
+  
+      // Retry logic
+      let retryCount = 0;
+      const maxRetries = 3;
+      while (!file && retryCount < maxRetries) {
+        // Wait for a short period before retrying
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        file = await db.file.findFirst({
+          where: {
+            key: input.key,
+            userId,
+          },
+        });
+  
+        retryCount++;
+      }
+  
+      if (!file) throw new TRPCError({ code: 'NOT_FOUND' });
+  
+      return file;
     }),
+  
 
   deleteFile: privateProcedure
     .input(z.object({ id: z.string() }))

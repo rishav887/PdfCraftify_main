@@ -17,8 +17,8 @@ export function absoluteUrl(path: string) {
 
 //TODO : Need to update the image and icons 
 export function constructMetadata({
-  title = "Converse2Pdf : AI based PDF Reader",
-  description = "Converse2Pdf is a SAAS App to read PDF and answer your questions in runtime.",
+  title = "Converse2Pdf: An AI-Powered PDF Reader",
+  description = "Experience the convenience of Converse2Pdf, a AI based app designed to read PDFs and provide real-time answers to your questions",
   image = "/thumbnail2.png",
   icons = "/favicon.ico",
   noIndex = false
@@ -50,7 +50,8 @@ export function constructMetadata({
     },
     icons,
    // metadataBase: new URL('https://pdf-craftify-main.vercel.app'),
-    metadataBase: new URL('https://pdfcraftify-ai.up.railway.app'),
+   // metadataBase: new URL('https://pdfcraftify-ai.up.railway.app'),
+   metadataBase: new URL('https://converse2pdf.com'),
     themeColor: '#FFF',
     ...(noIndex && {
       robots: {
