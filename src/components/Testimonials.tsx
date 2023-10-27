@@ -7,7 +7,7 @@ const Testimonials = () => {
         Testimonials
       </h3>
       <p className="mb-6 pb-2 md:mb-12 md:pb-0">
-      Get ready for a game-changer! PDFCraftify is about to revolutionize how you interact with PDF documents. Say goodbye to traditional reading and hello to a new era of engagement! 💪📄 #PDFCraftifyRevolution
+      Get ready for a game-changer! Converse2Pdf is about to revolutionize how you interact with PDF documents. Say goodbye to traditional reading and hello to a new era of engagement! 💪📄 #Converse2PdfRevolution
       </p>
 
       {/* Container for the Testimonials */}
@@ -34,7 +34,7 @@ const Testimonials = () => {
             >
               <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
             </svg>
-            Discovery of the day: PDFCraftify! 🚀 Upload your PDF and engage in a dynamic "chat" with it. It even highlights the referenced text in its responses. A game-changer for navigating through documents. Wish I had this gem during my masters thesis! 🎓
+            Discovery of the day: Converse2Pdf! 🚀 Upload your PDF and engage in a dynamic "chat" with it. It even highlights the referenced text in its responses. A game-changer for navigating through documents. Wish I had this gem during my masters thesis! 🎓
           </p>
         </div>
 
@@ -61,7 +61,7 @@ const Testimonials = () => {
               <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
             </svg>
            
-        Impressed by PDFCraftify!  Uploaded an 11MB, 500-page PDF, and it effortlessly answers questions. Mind = blown! 😱
+        Impressed by Converse2Pdf!  Uploaded an 11MB, 500-page PDF, and it effortlessly answers questions. Mind = blown! 😱
           </p>
           <ul className="mb-0 flex items-center justify-center">
             <li>

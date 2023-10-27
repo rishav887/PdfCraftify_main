@@ -17,8 +17,8 @@ export function absoluteUrl(path: string) {
 
 //TODO : Need to update the image and icons 
 export function constructMetadata({
-  title = "PDFCraftify : AI based PDF reader",
-  description = "PDFCraftify is a saas app to read PDF and answer your questions in runtime.",
+  title = "Converse2Pdf : AI based PDF Reader",
+  description = "Converse2Pdf is a SAAS App to read PDF and answer your questions in runtime.",
   image = "/thumbnail.png",
   icons = "/favicon.ico",
   noIndex = false
