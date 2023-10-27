@@ -20,7 +20,7 @@ export default function Home() {
       <span className='text-blue-600'>PDF File!</span>{' '}
     </h1>
     <p className='mt-5 max-w-prose text-zinc-700 sm:text-lg'>
-    AI-driven PDFCraftify empowers you to turn static documents—such as business proposals, 
+    AI-driven Converse2Pdf empowers you to turn static documents—such as business proposals, 
     academic research papers, technical manuals, product catalogs, 
     user manuals, marketing brochures, e-books, government documents—into dynamic conversations, 
     allowing you to inquire, summarize, discover, and explore.
@@ -116,7 +116,7 @@ export default function Home() {
             Start a conversation effortlessly with any PDF document.
             </h2>
             <p className='mt-4 text-lg text-gray-600'>
-            Breathing life into static files, PDFCraftify enables you to engage in interactive conversations, ask questions, 
+            Breathing life into static files, Converse2Pdf enables you to engage in interactive conversations, ask questions, 
             distill information, and explore the depths of your legal agreements and financial reports.
             </p>
           </div>
@@ -184,7 +184,7 @@ export default function Home() {
               </span>
               <span className='mt-2 text-zinc-700'>
               Store multiple PDFs and talk to them seamlessly starting from complex files like Legal Docs to Books etc
-              It&apos;s that simple. Try out PDFCraftify today -
+              It&apos;s that simple. Try out Converse2Pdf today -
               it really takes less than a minute.
               </span>
             </div>

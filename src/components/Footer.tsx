@@ -28,18 +28,18 @@ const Footer = () => {
     <><footer className="bg-gray-900 text-white p-8">
       <div className="flex flex-col md:flex-row justify-between">
         <div className="mb-4 md:mb-0">
-          <h3 className="text-xl font-bold mb-2">PDFCraftify</h3>
+          <h3 className="text-xl font-bold mb-2">Converse2Pdf</h3>
           <p className="text-gray-400">Transforming static documents into dynamic dialogues.</p>
         </div>
         <div className="mb-4 md:mb-0">
           <h3 className="text-xl font-bold mb-2">Contact Us</h3>
-          <p className="text-gray-400">Email: pdfcraftify@gmail.com</p>
+          <p className="text-gray-400">Email: converse2pdf@gmail.com</p>
 
         </div>
         <div>
           <h3 className="text-xl font-bold mb-2">Follow Us</h3>
           <div className="flex space-x-4">
-            <a href="https://twitter.com/PdfCraftify" className="text-gray-400 hover:text-white transition duration-300">
+            <a href="https://twitter.com/converse2pdf" className="text-gray-400 hover:text-white transition duration-300">
               Twitter
             </a>
             <a href="https://www.facebook.com/profile.php?id=61552189864979" className="text-gray-400 hover:text-white transition duration-300">
@@ -50,7 +50,7 @@ const Footer = () => {
       </div>
       <hr className="my-6 border-gray-700" />
       <p className="text-sm text-gray-500">
-        &copy; 2023 PDFCraftify. All rights reserved. |
+        &copy; 2023 Converse2Pdf. All rights reserved. |
         <a href="#!" className="text-gray-400 hover:text-white transition duration-300" onClick={openPrivacyModal}> Privacy Policy</a> |
         <a href="#!" className="text-gray-400 hover:text-white transition duration-300" onClick={openTermsModal}> Terms of Service</a>
       </p>
@@ -65,7 +65,7 @@ const Footer = () => {
           <h2 className="text-xl font-bold mb-2">Privacy Policy</h2>
           <p className="text-gray-400">
             <p>
-              Welcome to PDFCraftify! This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website. By using our services, you agree to the terms outlined in this policy.
+              Welcome to Converse2Pdf! This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website. By using our services, you agree to the terms outlined in this policy.
             </p>
 
             <h3>1. Information We Collect</h3>
@@ -92,11 +92,11 @@ const Footer = () => {
 
             <h3>9. Contact Us</h3>
             <p>
-              If you have any questions about this Privacy Policy, please reach out to us at contact@pdfcraftify.com.
+              If you have any questions about this Privacy Policy, please reach out to us at contact@converse2pdf.com.
             </p>
 
             <p>
-              Thank you for entrusting PDFCraftify with your information. We are committed to protecting your privacy and providing a secure online experience.
+              Thank you for entrusting Converse2Pdf with your information. We are committed to protecting your privacy and providing a secure online experience.
             </p>
           </p>
           {/* You can add more content here */}
@@ -115,7 +115,7 @@ const Footer = () => {
           <h2 className="text-xl font-bold mb-2">Privacy Policy</h2>
           <p className="text-gray-400">
             <p>
-              Welcome to PDFCraftify! This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website. By using our services, you agree to the terms outlined in this policy.
+              Welcome to Converse2Pdf! This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website. By using our services, you agree to the terms outlined in this policy.
             </p>
 
             <h3>1. Information We Collect</h3>
@@ -142,11 +142,11 @@ const Footer = () => {
 
             <h3>9. Contact Us</h3>
             <p>
-              If you have any questions about this Privacy Policy, please reach out to us at pdfcraftify@gmail.com.
+              If you have any questions about this Privacy Policy, please reach out to us at Converse2Pdf@gmail.com.
             </p>
 
             <p>
-              Thank you for entrusting PDFCraftify with your information. We are committed to protecting your privacy and providing a secure online experience.
+              Thank you for entrusting Converse2Pdf with your information. We are committed to protecting your privacy and providing a secure online experience.
             </p>
           </p>
           {/* You can add more content here */}
