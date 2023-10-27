@@ -4,11 +4,13 @@ import { ArrowRight } from 'lucide-react'
 import { buttonVariants } from '@/components/ui/button'
 import Image from 'next/image'
 import Footer from '@/components/Footer';
-import { RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server'
+import { RegisterLink, getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import Testimonials from '@/components/Testimonials'
 
 
 export default function Home() {
+  const { getUser } = getKindeServerSession()
+  const user = getUser()
   return (
     <>
 <MaxWidthWrapper className='max-w-8xl mx-auto inline-block items-center p-3 pt-0 lg:flex lg:flex-wrap lg:pt-4'>
@@ -34,12 +36,27 @@ export default function Home() {
       Discover the possibilities with documents.
     </p>
 
-    <RegisterLink
-      className={buttonVariants({
-        size: 'lg',
-      })}>
-      Get started{' '}
-    </RegisterLink>
+  
+    {user ? (
+  <Link
+    href="/dashboard"
+    className={buttonVariants({
+      size: 'lg',
+    })}
+  >
+    Dashboard
+  </Link>
+) : (
+  <RegisterLink
+    className={buttonVariants({
+      size: 'lg',
+    })}
+  >
+    Get started{' '}
+  </RegisterLink>
+)}
+
+
   </div>
 </MaxWidthWrapper>
 
