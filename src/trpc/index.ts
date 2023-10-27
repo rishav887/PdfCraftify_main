@@ -14,12 +14,15 @@ import {
   stripe,
 } from '@/lib/stripe'
 import { PLANS } from '@/config/stripe'
+import { use } from 'react'
 
 export const appRouter = router({
   authCallback: publicProcedure.query(async () => {
     const { getUser } = getKindeServerSession()
     const user = getUser()
 
+    console.log("the user from kinde server session is "+user)
+    
     if (!user.id || !user.email)
       throw new TRPCError({ code: 'UNAUTHORIZED' })
 
@@ -29,6 +32,8 @@ export const appRouter = router({
         id: user.id,
       },
     })
+
+    console.log("user in db is "+dbUser)
 
     if (!dbUser) {
       // create user in db
@@ -90,14 +95,14 @@ export const appRouter = router({
         await stripe.checkout.sessions.create({
           success_url: billingUrl,
           cancel_url: billingUrl,
-          payment_method_types: ['card'],
+          payment_method_types: ['card', 'paypal'],
           mode: 'subscription',
           billing_address_collection: 'auto',
           line_items: [
             {
               price: PLANS.find(
                 (plan) => plan.name === 'Pro'
-              )?.price.priceIds.production,
+              )?.price.priceIds.test,
               quantity: 1,
             },
           ],
@@ -176,39 +181,22 @@ export const appRouter = router({
       return { status: file.uploadStatus }
     }),
 
-    getFile: privateProcedure
+  getFile: privateProcedure
     .input(z.object({ key: z.string() }))
     .mutation(async ({ ctx, input }) => {
-      const { userId } = ctx;
-      let file = await db.file.findFirst({
+      const { userId } = ctx
+
+      const file = await db.file.findFirst({
         where: {
           key: input.key,
           userId,
         },
-      });
-  
-      // Retry logic
-      let retryCount = 0;
-      const maxRetries = 3;
-      while (!file && retryCount < maxRetries) {
-        // Wait for a short period before retrying
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        file = await db.file.findFirst({
-          where: {
-            key: input.key,
-            userId,
-          },
-        });
-  
-        retryCount++;
-      }
-  
-      if (!file) throw new TRPCError({ code: 'NOT_FOUND' });
-  
-      return file;
+      })
+
+      if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
+
+      return file
     }),
-  
 
   deleteFile: privateProcedure
     .input(z.object({ id: z.string() }))
