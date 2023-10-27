@@ -12,7 +12,12 @@ const nextConfig = {
         destination: '/api/auth/register',
         permanent: true,
       },
-    ]
+      {
+        source: '/sign-out',
+        destination: '/api/auth/logout',
+        permanent: true,
+      },
+    ];
   },
 
   images: {
@@ -23,11 +28,18 @@ const nextConfig = {
     config,
     { buildId, dev, isServer, defaultLoaders, webpack }
   ) => {
-    config.resolve.alias.canvas = false
-    config.resolve.alias.encoding = false
-    return config
+    config.resolve.alias.canvas = false;
+    config.resolve.alias.encoding = false;
+    return config;
   },
-}
+};
 
+const withImages = require('next-images');
+module.exports = withImages({
+  esModule: true,
+  webpack(config, options) {
+    return config;
+  },
+});
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -8,6 +8,7 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import { NextRequest } from 'next/server';
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 
+
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
 
@@ -66,7 +67,7 @@ export const POST = async (req: NextRequest) => {
     take: 6,
   });
 
-  const formattedPrevMessages = prevMessages.map((msg) => ({
+  const formattedPrevMessages = prevMessages.map((msg: { isUserMessage: any; text: any; }) => ({
     role: msg.isUserMessage ? ('user' as const) : ('assistant' as const),
     content: msg.text,
   }));
@@ -89,7 +90,7 @@ export const POST = async (req: NextRequest) => {
   
   PREVIOUS CONVERSATION:
   ${formattedPrevMessages
-    .map((message) =>
+    .map((message: { role: string; content: any; }) =>
       message.role === 'user'
         ? `User: ${message.content}\n`
         : `Assistant: ${message.content}\n`
@@ -107,7 +108,7 @@ export const POST = async (req: NextRequest) => {
   });
 
   const timeoutPromise = new Promise<never>((_, reject) => {
-    const timeoutDuration = 20000; // 20 seconds timeout, adjust as needed
+    const timeoutDuration = 40000; // 40 seconds timeout, adjust as needed
     setTimeout(() => {
       reject(new Error('OpenAI API request timed out'));
     }, timeoutDuration);
@@ -132,6 +133,6 @@ export const POST = async (req: NextRequest) => {
     return new StreamingTextResponse(stream);
   } catch (error) {
     console.error('OpenAI API request failed:', error);
-    return new Response('Internal Server Error', { status: 500 });
+    return new Response('OpenAI API request timed out or failed', { status: 500 });
   }
 };
