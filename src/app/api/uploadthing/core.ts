@@ -14,6 +14,10 @@ import { PLANS } from '@/config/stripe'
 
 const f = createUploadthing()
 
+export const config = {
+  runtime: 'edge',
+};
+
 const middleware = async () => {
   const { getUser } = getKindeServerSession()
   const user = getUser()
