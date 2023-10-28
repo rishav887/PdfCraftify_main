@@ -36,12 +36,15 @@ const onUploadComplete = async ({
     url: string
   }
 }) => {
+  console.log("The key of the uplaoded file is "+file.key)
+  console.log("The url of the uplaoded file is "+file.url)
   const isFileExist = await db.file.findFirst({
     where: {
       key: file.key,
     },
   })
 
+  console.log("The file exist check in place "+isFileExist)
   if (isFileExist) return
 
   //TODO : dont store the file in AWS
@@ -61,6 +64,8 @@ const onUploadComplete = async ({
     )
   //------------xx------------------
     const blob = await response.blob()
+    console.log("this is the response from uploadthing  "+response.text)
+    console.log("this is the blob from uploadthing  "+blob.toString)
 
     const loader = new PDFLoader(blob)
 
@@ -92,6 +97,7 @@ const onUploadComplete = async ({
         },
       })
     }
+  console.log("Created file ID: ", createdFile.id);
 
     
    //todo debug  pinecone 
@@ -125,6 +131,8 @@ const onUploadComplete = async ({
       },
     })
   } catch (err) {
+    console.error("Error during file processing: ", err);
+    
     await db.file.update({
       data: {
         uploadStatus: 'FAILED',
