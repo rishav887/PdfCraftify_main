@@ -87,7 +87,6 @@ const Footer = () => {
             <h3>5. Third-Party Links</h3>
             <p>
               Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these websites.
-
             </p>
 
             <h3>6. Data Retention</h3>
@@ -113,12 +112,12 @@ const Footer = () => {
             <p>
               Thank you for entrusting Converse2Pdf with your information. We are committed to protecting your privacy and providing a secure online experience.
             </p>
-            
+
             <button onClick={closePrivacyModal}>Close</button>
           </div>
         </Modal>
 
-        {/* Terms of service Modal */}
+        {/* Terms of Service Modal */}
         <Modal
           isOpen={isTermsModalOpen}
           onRequestClose={closeTermsModal}
@@ -165,7 +164,7 @@ const Footer = () => {
             <p>
               Thank you for using Converse2Pdf! We hope you find our services valuable and enjoyable.
             </p>
-        
+
             <button onClick={closeTermsModal}>Close</button>
           </div>
         </Modal>
