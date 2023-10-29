@@ -62,6 +62,7 @@ const Footer = () => {
           <div>
             <h2 className="text-xl font-bold mb-2">Privacy Policy</h2>
             <p className="text-gray-400">
+             <p> 
               Welcome to Converse2Pdf! This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website. By using our services, you agree to the terms outlined in this policy.
             </p>
             <h3>1. Information We Collect</h3>
@@ -115,6 +116,7 @@ const Footer = () => {
             </p>
             
             <button onClick={closePrivacyModal}>Close</button>
+            </p>
           </div>
         </Modal>
 
@@ -127,6 +129,7 @@ const Footer = () => {
           <div>
             <h2 className="text-xl font-bold mb-2">Terms of Service</h2>
             <p className="text-gray-400">
+              <p>
               Welcome to Converse2Pdf! This Terms of Service explains the terms and conditions for using our website. By using our services, you agree to comply with these terms.
             </p>
             <h3>1. Acceptance of Terms</h3>
@@ -167,6 +170,7 @@ const Footer = () => {
             </p>
         
             <button onClick={closeTermsModal}>Close</button>
+            </p>
           </div>
         </Modal>
       </footer>
