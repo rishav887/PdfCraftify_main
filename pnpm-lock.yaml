@@ -63,8 +63,8 @@ dependencies:
     specifier: ^10.38.4
     version: 10.38.4
   '@types/node':
-    specifier: 20.8.9
-    version: 20.8.9
+    specifier: 18.0.0
+    version: 18.0.0
   '@types/react':
     specifier: 18.2.22
     version: 18.2.22
@@ -86,6 +86,9 @@ dependencies:
   clsx:
     specifier: ^2.0.0
     version: 2.0.0
+  crypto-js:
+    specifier: ^4.2.0
+    version: 4.2.0
   date-fns:
     specifier: ^2.30.0
     version: 2.30.0
@@ -488,7 +491,7 @@ packages:
     dependencies:
       cookie: 0.5.0
       crypto: 1.0.1
-      crypto-js: 4.1.1
+      crypto-js: 4.2.0
       jwt-decode: 3.1.2
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -1542,18 +1545,16 @@ packages:
   /@types/node-fetch@2.6.5:
     resolution: {integrity: sha512-OZsUlr2nxvkqUFLSaY2ZbA+P1q22q+KrlxWOn/38RX+u5kTkYL2mTujEpzUhGkS+K/QCYp9oagfXG39XOzyySg==}
     dependencies:
-      '@types/node': 20.8.9
+      '@types/node': 18.0.0
       form-data: 4.0.0
+    dev: false
+
+  /@types/node@18.0.0:
+    resolution: {integrity: sha512-cHlGmko4gWLVI27cGJntjs/Sj8th9aYwplmZFwmmgYQQvL5NUsgVJG7OddLvNfLqYS31KFN0s3qlaD9qCaxACA==}
     dev: false
 
   /@types/node@18.17.18:
     resolution: {integrity: sha512-/4QOuy3ZpV7Ya1GTRz5CYSz3DgkKpyUptXuQ5PPce7uuyJAOR7r9FhkmxJfvcNUXyklbC63a+YvB3jxy7s9ngw==}
-    dev: false
-
-  /@types/node@20.8.9:
-    resolution: {integrity: sha512-UzykFsT3FhHb1h7yD4CA4YhBHq545JC0YnEz41xkipN88eKQtL6rSgocL5tbAP6Ola9Izm/Aw4Ora8He4x0BHg==}
-    dependencies:
-      undici-types: 5.26.5
     dev: false
 
   /@types/prop-types@15.7.6:
@@ -2515,8 +2516,8 @@ packages:
     resolution: {integrity: sha512-mCxBlsHFYh9C+HVpiEacem8FEBnMXgU9gy4zmNC+SXAZNB/1idgp/aulFJ4FgCi7GPEVbfyng092GqL2k2rmow==}
     dev: false
 
-  /crypto-js@4.1.1:
-    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
+  /crypto-js@4.2.0:
+    resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
     dev: false
 
   /crypto@1.0.1:
@@ -3851,7 +3852,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.8.9
+      '@types/node': 18.0.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
@@ -6069,7 +6070,7 @@ packages:
     resolution: {integrity: sha512-0cbUNl5aDwt5rIZeE/WgyTxZN/PtwyeA5KcVJrHj260tjN4IOo2BZikN+dxhKoeBfI4aSRAd3E5vHRKmjjaSbA==}
     engines: {node: '>=12.*'}
     dependencies:
-      '@types/node': 20.8.9
+      '@types/node': 18.0.0
       qs: 6.11.2
     dev: false
 
@@ -6474,10 +6475,6 @@ packages:
       has-bigints: 1.0.2
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
-    dev: false
-
-  /undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: false
 
   /unified@10.1.2:
