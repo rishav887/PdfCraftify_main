@@ -1,4 +1,9 @@
 # Converse2Pdf
+
+Converse2Pdf is a full-stack AI SaaS application that enables users to upload PDFs and engage in contextual, memory-aware conversations with their documents. Built with Next.js 13.5, TypeScript, tRPC, Prisma, and Tailwind, it integrates LangChain and Pinecone for vector-based semantic search and long-term conversational memory.
+
+The platform includes authentication via Kinde, Stripe-powered Free and Pro plans, real-time streaming responses, optimistic UI updates, drag-and-drop uploads, and a clean modern interface — delivering a scalable, production-ready AI document interaction system.
+
 Built with the Next.js 13.5 App Router, tRPC, TypeScript, Prisma & Tailwind
 
 
